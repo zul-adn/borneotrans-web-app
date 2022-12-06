@@ -10,8 +10,20 @@ const searchTicket = () => {};
 
 const getDestinations = () =>
   axios({
-    url: "/banner",
+    url: "/vehicle-details",
     method: "GET",
   });
 
-export { getBanners, getDestinations };
+const getCars = () =>
+  axios({
+    url: "/vehicle-details",
+    method: "GET",
+  });
+
+// const getArticles = () =>
+//   axios({
+//     url: "/article",
+//     method: "GET",
+//   });
+
+export { getBanners, getDestinations, getCars };

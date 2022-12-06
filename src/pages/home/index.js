@@ -1,6 +1,6 @@
 import React from "react";
-import { getBanners, getDestinations } from "../../utils/request";
-import { Carousel } from "../../components";
+import { getBanners, getCars, getDestinations } from "../../utils/request";
+import { Carousel, SearchBox } from "../../components";
 import Layout from "../Layout";
 
 export default function Index({ content }) {
@@ -11,8 +11,9 @@ export default function Index({ content }) {
   }, []);
 
   return (
-    <Layout>
+    <Layout title={"Home"}>
       <Carousel images={content?.banners} />
+      <SearchBox destination={content?.cities} />
     </Layout>
   );
 }
@@ -20,13 +21,15 @@ export default function Index({ content }) {
 export async function getServerSideProps() {
   try {
     const banners = await getBanners();
-    const city = await getDestinations();
+    const cities = await getDestinations();
+    const vehicles = await getCars();
 
     return {
       props: {
         content: {
           banners,
-          city,
+          cities,
+          vehicles,
         },
       },
     };
