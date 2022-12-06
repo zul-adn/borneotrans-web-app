@@ -14,7 +14,6 @@ import { useEffect } from "react";
 export default function Home({ content }) {
   useEffect(() => {
     console.log("Content", content);
-    console.log("asd");
   }, []);
   return (
     <Layout title="Home">
@@ -32,7 +31,7 @@ export async function getServerSideProps() {
     const vehicles = await getCars();
     const articles = await getArticles();
 
-    console.log("vehicles", articles);
+    console.log("vehicles", banners);
 
     return {
       props: {
