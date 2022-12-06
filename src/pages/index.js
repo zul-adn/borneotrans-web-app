@@ -18,9 +18,7 @@ export default function Home({ content }) {
   }, []);
   return (
     <Layout title="Home">
-      <div>
-        <Carousel images={content?.banners} />
-      </div>
+      <Carousel images={content?.banners} />
       <SearchBox destination={content?.cities} />
       <CarToRent vehicles={content?.vehicles} />
     </Layout>

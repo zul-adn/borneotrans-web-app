@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import DatePicker from "react-datepicker";
+import { Button } from "..";
 
 export default function Index(props) {
   const { destination } = props;
@@ -16,8 +17,11 @@ export default function Index(props) {
 
   return (
     <div
-      className={`max-w-4xl mx-auto px-4 border rounded mt-52 bg-white z-50`}>
-      <div className="flex items-center justify-around  p-5">
+      className={`max-w-5xl mx-auto  border rounded mt-80 bg-white z-50 shadow-lg`}>
+      <div className="flex items-center justify-start border-b px-5 py-3">
+        <span className={`text-lg`}>Hai kamu, mau ke mana?</span>
+      </div>
+      <div className="flex items-center justify-around p-5 ">
         <div className={"w-full p-1"}>
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Berangkat dari
@@ -54,7 +58,7 @@ export default function Index(props) {
         </div>
       </div>
       <div className="flex items-center justify-end p-5">
-        
+        <Button label={"Cari"} onClick={() => {}} />
       </div>
     </div>
   );
