@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export default function Index(props) {
   const { image, name, brand, price, availability, owndriven } = props;

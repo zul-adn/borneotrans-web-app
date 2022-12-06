@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {
   getBanners,
   getCars,
@@ -27,9 +27,9 @@ export default function Home({ content }) {
 export async function getServerSideProps() {
   try {
     const banners = await getBanners();
-    const cities = await getDestinations();
-    const vehicles = await getCars();
-    const articles = await getArticles();
+    // const cities = await getDestinations();
+    // const vehicles = await getCars();
+    // const articles = await getArticles();
 
     console.log("vehicles", banners);
 
@@ -37,9 +37,9 @@ export async function getServerSideProps() {
       props: {
         content: {
           banners,
-          cities,
-          vehicles,
-          articles,
+          // cities,
+          // vehicles,
+          // articles,
         },
       },
     };
