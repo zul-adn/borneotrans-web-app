@@ -19,22 +19,21 @@ export default function Index(props) {
   };
 
   return (
-    <div className={"w-full absolute top-0 h-3/5 bg-slate-400"}>
-      <div className={""}>
-        {/* <Slider {...settings} className={"w-full h-full relative bg-slate-400"}>
+    <div className={`w-full absolute top-0 h-3/5 bg-slate-400 -z-10`}>
+      {/* <Slider {...settings} className={"w-full h-full relative bg-slate-400"}>
           {images?.data
             .filter((image) => image.status)
             .map((img, i) => (
               <div key={`banner-${i}`} className={"relative"}> */}
-        <img
-          // src={`${backendUrl}/${img.filename}`}
-          src={
-            "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1274&q=80"
-          }
-          alt={"alt"}
-          className={`w-full h-full object-cover`}
-        />
-      </div>
+      <img
+        // src={`${backendUrl}/${img.filename}`}
+        src={
+          "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1274&q=80"
+        }
+        alt={"alt"}
+        className={`w-full h-full object-cover `}
+      />
+
       {/* ))}
         </Slider>
       </div> */}

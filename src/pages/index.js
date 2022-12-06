@@ -13,13 +13,16 @@ import { useEffect } from "react";
 
 export default function Home({ content }) {
   useEffect(() => {
-    console.log(content);
+    console.log("Content", content);
+    console.log("asd");
   }, []);
   return (
     <Layout title="Home">
-      {/* <Carousel images={content?.banners} />
+      <div>
+        <Carousel images={content?.banners} />
+      </div>
       <SearchBox destination={content?.cities} />
-      <CarToRent vehicles={content?.vehicles} /> */}
+      <CarToRent vehicles={content?.vehicles} />
     </Layout>
   );
 }
@@ -27,9 +30,9 @@ export default function Home({ content }) {
 export async function getServerSideProps() {
   try {
     const banners = await getBanners();
-    // const cities = await getDestinations();
+    const cities = await getDestinations();
     const vehicles = await getCars();
-    // const articles = await getArticles();
+    const articles = await getArticles();
 
     console.log("vehicles", articles);
 
@@ -39,7 +42,7 @@ export async function getServerSideProps() {
           banners,
           cities,
           vehicles,
-          // articles,
+          articles,
         },
       },
     };

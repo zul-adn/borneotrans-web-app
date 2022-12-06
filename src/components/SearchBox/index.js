@@ -15,7 +15,8 @@ export default function Index(props) {
   };
 
   return (
-    <div className="z-100 max-w-4xl mx-auto px-4 border rounded mt-10 bg-white">
+    <div
+      className={`max-w-4xl mx-auto px-4 border rounded mt-52 bg-white z-50`}>
       <div className="flex items-center justify-around  p-5">
         <div className={"w-full p-1"}>
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -51,6 +52,9 @@ export default function Index(props) {
             //   onChange={(date) => setValue({ ...values, date: date })}
           />
         </div>
+      </div>
+      <div className="flex items-center justify-end p-5">
+        
       </div>
     </div>
   );
