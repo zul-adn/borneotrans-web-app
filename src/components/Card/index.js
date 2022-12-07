@@ -9,7 +9,7 @@ export default function Index(props) {
   return (
     <div
       className={`flex flex-col drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}>
-      <div style={{ height: 350 }}>
+      <div >
         <div className={`w-full aspect-square`}>
           <img
             src={image}
