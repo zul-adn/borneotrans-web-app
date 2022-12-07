@@ -1,24 +1,54 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/legacy/image";
+import { Button } from "..";
 
 export default function Index(props) {
-  const { image, name, brand, price, availability, owndriven } = props;
+  const { image, name, brand, price, availability, owndriven, maintype } =
+    props;
   return (
     <div
-      className={`drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}>
-      <img
-        src={
-          "https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
-        }
-        alt="car"
-        className={"w-full rounded aspect-square"}
-      />
-      <div className={`flex flex-col mt-3 p-2`}>
-        <div className={`text-sm font-semibold`}>{brand}</div>
-        <div className={`text-lg `}>{name}</div>
-        <div>{owndriven ? "asas" : "no"}</div>
+      className={`flex flex-col drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}>
+      <div style={{ height: 350 }}>
+        <div className={`w-full aspect-square`}>
+          <img
+            src={image}
+            alt="car"
+            className={"w-full h-full rounded  object-cover "}
+          />
+        </div>
+
+        <div className={`flex flex-col mt-3 p-2`}>
+          <div className={`text-sm font-semibold`}>
+            {brand} {maintype}
+          </div>
+          <div className={`text-lg `}>{name}</div>
+          <div
+            className={`${
+              availability
+                ? "text-green-800 text-sm font-semibold"
+                : " text-gray-500 text-sm"
+            }  `}>
+            {availability ? "Tersedia" : "Tidak Tersedia"}
+          </div>
+        </div>
       </div>
+      <div className={"justify-self-end"}>
+        <div
+          className={"text-right mb-7 text-lg text-orange-600 font-semibold mr-2"}>
+          Rp {price?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+        </div>
+        <Button onClick={() => {}} label={"Pesan Sekarang"} />
+      </div>
+      {owndriven ? (
+        <div
+          className={
+            "absolute bg-green-500 right-0 mr-3 mt-2 px-5 rounded text-white text-sm py-1"
+          }>
+          {" "}
+          Lepas Kunci
+        </div>
+      ) : null}
     </div>
   );
 }

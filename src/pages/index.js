@@ -6,10 +6,11 @@ import {
   getDestinations,
   getArticles,
 } from "../utils/request";
-import { Carousel, SearchBox } from "../components";
+import { Carousel, SearchBox, SectionTitle } from "../components";
 import CarToRent from "../layout/cartorent";
 import Layout from "./Layout";
 import { useEffect } from "react";
+import { carToRent, destinations } from "../mockup/datas";
 
 export default function Home({ content }) {
   useEffect(() => {
@@ -18,8 +19,21 @@ export default function Home({ content }) {
   return (
     <Layout title="Home">
       <Carousel images={content?.banners} />
-      <SearchBox destination={content?.cities} />
-      <CarToRent vehicles={content?.vehicles} />
+      <SearchBox destination={destinations} />
+      <SectionTitle
+        title={"Mau sewa Bus ?"}
+        subtitle={
+          "Ada berbagai pilihan Bus dengan harga spesial, lho. Jangan sampai kehabisan ya!"
+        }
+      />
+      <CarToRent vehicles={carToRent} itemToShow={7} filterBy={"Bus"} />
+      <SectionTitle
+        title={"Kami juga menyediakan Mini Bus!"}
+        subtitle={
+          "Buat perjalanan keluarga anda lebih menyenangkan. Temukan mobil impian anda!"
+        }
+      />
+      <CarToRent vehicles={carToRent} itemToShow={11} filterBy={"Mini Bus"} />
     </Layout>
   );
 }

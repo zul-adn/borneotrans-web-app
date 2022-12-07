@@ -2,19 +2,36 @@ import React from "react";
 import { Card } from "../../components";
 
 export default function Index(props) {
-  const { vehicles } = props;
+  const { vehicles, itemToShow, filterBy } = props;
+
   return (
-    <div className={`max-w-5xl mx-auto px-4 mt-10`}>
+    <div className={`max-w-5xl mx-auto mt-10`}>
       <div
         className={`grid grid-cols-4 gap-2 md:grid-cols-2 lg:grid-cols-4 lg:gap-4`}>
-        {vehicles?.data.map((vehicle, index) => (
-          <Card
-            key={`vehicle-${index}`}
-            name={vehicle?.name}
-            brand={vehicle?.brand}
-            availability={vehicle?.availability}
-          />
-        ))}
+        {vehicles
+          .filter((car) =>
+            filterBy === "Bus"
+              ? car.maintype === "Bus"
+              : car.maintype === "Mini Bus"
+          )
+          ?.slice(0, itemToShow ?? vehicles.length)
+          .sort((a, b) => (a.availability && b.availability ? null : -1))
+          .map((vehicle, index) => (
+            <Card
+              key={`vehicle-${index}`}
+              name={vehicle?.name}
+              brand={vehicle?.brand}
+              availability={vehicle?.availability}
+              price={vehicle?.price}
+              owndriven={vehicle?.owndriven}
+              maintype={vehicle?.maintype}
+              image={
+                vehicle?.image[
+                  Math.floor(Math.random() * vehicle?.image.length)
+                ]
+              }
+            />
+          ))}
       </div>
     </div>
   );
