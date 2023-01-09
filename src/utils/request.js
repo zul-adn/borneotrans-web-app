@@ -10,7 +10,7 @@ const searchTicket = () => {};
 
 const getDestinations = () =>
   axios({
-    url: "/vehicle-details",
+    url: "/cities-destination",
     method: "GET",
   });
 
@@ -20,10 +20,35 @@ const getCars = () =>
     method: "GET",
   });
 
+const getTickets = () =>
+  axios({
+    url: "/ticket",
+    method: "GET",
+  });
+
+const getTrips = () =>
+  axios({
+    url: "/routes-trip",
+    method: "GET",
+  });
+
+const getPartner = () =>
+  axios({
+    url: "/partner",
+    method: "GET",
+  });
+
 // const getArticles = () =>
 //   axios({
 //     url: "/article",
 //     method: "GET",
 //   });
 
-export { getBanners, getDestinations, getCars };
+export {
+  getBanners,
+  getDestinations,
+  getCars,
+  getTickets,
+  getTrips,
+  getPartner,
+};

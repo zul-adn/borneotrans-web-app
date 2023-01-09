@@ -19,21 +19,25 @@ export default function Home({ content }) {
   return (
     <Layout title="Home">
       <Carousel images={content?.banners} />
-      <SearchBox destination={destinations} />
+      <SearchBox destination={content?.cities} />
       <SectionTitle
         title={"Mau sewa Bus ?"}
         subtitle={
           "Ada berbagai pilihan Bus dengan harga spesial, lho. Jangan sampai kehabisan ya!"
         }
       />
-      <CarToRent vehicles={carToRent} itemToShow={7} filterBy={"Bus"} />
+      <CarToRent vehicles={content.vehicles} itemToShow={7} filterBy={"Bus"} />
       <SectionTitle
         title={"Kami juga menyediakan Mini Bus!"}
         subtitle={
           "Buat perjalanan keluarga anda lebih menyenangkan. Temukan mobil impian anda!"
         }
       />
-      <CarToRent vehicles={carToRent} itemToShow={11} filterBy={"Mini Bus"} />
+      <CarToRent
+        vehicles={content.vehicles}
+        itemToShow={11}
+        filterBy={"Mini Bus"}
+      />
     </Layout>
   );
 }
@@ -41,8 +45,8 @@ export default function Home({ content }) {
 export async function getServerSideProps() {
   try {
     const banners = await getBanners();
-    // const cities = await getDestinations();
-    // const vehicles = await getCars();
+    const cities = await getDestinations();
+    const vehicles = await getCars();
     // const articles = await getArticles();
 
     console.log("vehicles", banners);
@@ -51,9 +55,8 @@ export async function getServerSideProps() {
       props: {
         content: {
           banners,
-          // cities,
-          // vehicles,
-          // articles,
+          cities,
+          vehicles,
         },
       },
     };

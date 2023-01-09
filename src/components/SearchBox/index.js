@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "..";
 
 export default function Index(props) {

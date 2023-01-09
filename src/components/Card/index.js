@@ -3,25 +3,25 @@ import React from "react";
 import Image from "next/legacy/image";
 import { Button } from "..";
 
+const assets_url = process.env.BACKEND_URL;
+
 export default function Index(props) {
   const { image, name, brand, price, availability, owndriven, maintype } =
     props;
   return (
     <div
       className={`flex flex-col drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}>
-      <div >
+      <div>
         <div className={`w-full aspect-square`}>
           <img
-            src={image}
+            src={`${assets_url}/vehicles/${image}`}
             alt="car"
             className={"w-full h-full rounded  object-cover "}
           />
         </div>
 
         <div className={`flex flex-col mt-3 p-2`}>
-          <div className={`text-sm font-semibold`}>
-            {brand} {maintype}
-          </div>
+          <div className={`text-xs font-semibold`}>{brand}</div>
           <div className={`text-lg `}>{name}</div>
           <div
             className={`${
@@ -35,7 +35,9 @@ export default function Index(props) {
       </div>
       <div className={"justify-self-end"}>
         <div
-          className={"text-right mb-7 text-lg text-orange-600 font-semibold mr-2"}>
+          className={
+            "text-right mb-7 text-lg text-orange-600 font-semibold mr-2"
+          }>
           Rp {price?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
         </div>
         <Button onClick={() => {}} label={"Pesan Sekarang"} />
