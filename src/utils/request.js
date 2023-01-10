@@ -20,9 +20,9 @@ const getCars = () =>
     method: "GET",
   });
 
-const getTickets = () =>
+const getTickets = (params) =>
   axios({
-    url: "/ticket",
+    url: `/ticket?str_date=${params.date}&from=${params.from}&to=${params.to}`,
     method: "GET",
   });
 
