@@ -6,7 +6,11 @@ module.exports = {
     // STRIPE_KEY: process.env.STRIPE_KEY,
   },
   images: {
-    domains: ["localhost", "images.unsplash.com", "http://localhost:3030"],
+    domains: [
+      "https://borneotrans.vercel.app",
+      "images.unsplash.com",
+      "https://borneotrans-api.amazingborneo.id",
+    ],
   },
   experimental: {
     // Enables the styled-components SWC transform
