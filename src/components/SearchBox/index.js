@@ -64,7 +64,7 @@ export default function Index(props) {
             Tanggal
           </label>
           <DatePicker
-            className=" appearance-none border w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className=" appearance-none border w-full py-3 px-3 bg-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             selected={values.date}
             onChange={(date) => setValue({ ...values, date: date })}
           />

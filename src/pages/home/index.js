@@ -6,9 +6,10 @@ import Layout from "../Layout";
 export default function Index({ content }) {
   React.useEffect(() => {
     if (content) {
+      console.log("CONTENT");
       console.log(content);
     }
-  }, []);
+  });
 
   return (
     <Layout title={"Home"}>
@@ -23,6 +24,7 @@ export async function getServerSideProps() {
     const banners = await getBanners();
     const cities = await getDestinations();
     const vehicles = await getCars();
+    const articles = await articles();
 
     return {
       props: {
@@ -30,6 +32,7 @@ export async function getServerSideProps() {
           banners,
           cities,
           vehicles,
+          articles,
         },
       },
     };
