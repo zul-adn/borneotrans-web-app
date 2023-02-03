@@ -20,6 +20,7 @@ const request = (options) => {
     headers: {
       ...requestHeaders,
       ...additionalHeaders,
+      "Accept-Encoding": "application/json",
     },
   });
   // eslint-disable-next-line arrow-body-style
