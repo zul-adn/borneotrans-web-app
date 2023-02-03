@@ -6,8 +6,9 @@ import {
   getDestinations,
   getArticles,
 } from "../utils/request";
-import { Carousel, SearchBox, SectionTitle } from "../components";
+import { CardArticles, Carousel, SearchBox, SectionTitle } from "../components";
 import CarToRent from "../layout/cartorent";
+import ArticleList from "../layout/articlelist";
 import Layout from "./Layout";
 import { useEffect } from "react";
 import { carToRent, destinations } from "../mockup/datas";
@@ -38,6 +39,11 @@ export default function Home({ content }) {
         itemToShow={11}
         filterBy={"Mini Bus"}
       />
+      <SectionTitle
+        title={"Baca Artikel Kami!"}
+        subtitle={"Temukan artikel menarik disini!"}
+      />
+      <ArticleList articles={content.articles} />
     </Layout>
   );
 }
@@ -47,9 +53,7 @@ export async function getServerSideProps() {
     const banners = await getBanners();
     const cities = await getDestinations();
     const vehicles = await getCars();
-    // const articles = await getArticles();
-
-    console.log("vehicles", banners);
+    const articles = await getArticles();
 
     return {
       props: {
@@ -57,6 +61,7 @@ export async function getServerSideProps() {
           banners,
           cities,
           vehicles,
+          articles,
         },
       },
     };

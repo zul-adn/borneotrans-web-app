@@ -38,11 +38,11 @@ const getPartner = () =>
     method: "GET",
   });
 
-// const getArticles = () =>
-//   axios({
-//     url: "/article",
-//     method: "GET",
-//   });
+const getArticles = () =>
+  axios({
+    url: "/article",
+    method: "GET",
+  });
 
 export {
   getBanners,
@@ -51,4 +51,5 @@ export {
   getTickets,
   getTrips,
   getPartner,
+  getArticles,
 };

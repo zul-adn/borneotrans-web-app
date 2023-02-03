@@ -5,8 +5,6 @@ import { carToRent } from "../../mockup/datas";
 export default function Index(props) {
   const { vehicles, itemToShow, filterBy } = props;
 
-  console.log(props);
-
   return (
     <div className={`max-w-5xl mx-auto mt-10`}>
       <div
