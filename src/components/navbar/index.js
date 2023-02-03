@@ -10,7 +10,6 @@ export default function Navbar() {
             <a href="#">Home</a>
             <a href="#">Article</a>
             <a href="#">Rent</a>
-            <a href="#">Abaout</a>
             <a href="#">Contact us</a>
           </div>
         </div>

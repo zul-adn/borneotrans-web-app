@@ -12,6 +12,7 @@ export default function Index(props) {
           return (
             <CardArticles
               key={`article-${index}`}
+              id={article.id}
               title={article.title}
               article={article.article}
               image={article.img}

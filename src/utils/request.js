@@ -44,6 +44,12 @@ const getArticles = () =>
     method: "GET",
   });
 
+const getArticleById = (id) =>
+  axios({
+    url: `/article?id=${id}`,
+    method: "GET",
+  });
+
 export {
   getBanners,
   getDestinations,
@@ -52,4 +58,5 @@ export {
   getTrips,
   getPartner,
   getArticles,
+  getArticleById,
 };

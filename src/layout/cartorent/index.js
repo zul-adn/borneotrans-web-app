@@ -10,11 +10,11 @@ export default function Index(props) {
       <div
         className={`grid m-auto grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 gap-2 lg:gap-2`}>
         {vehicles.data
-          // .filter((car) =>
-          //   filterBy === "Bus"
-          //     ? car.maintype === "Bus"
-          //     : car.maintype === "Mini Bus"
-          // )
+          .filter((car) =>
+            filterBy === "Bus"
+              ? car.maintype === ""
+              : car.maintype === "Mini Bus"
+          )
           ?.slice(0, itemToShow ?? vehicles.length)
           .sort((a, b) => (a.availability && b.availability ? null : -1))
           .map((vehicle, index) => {
