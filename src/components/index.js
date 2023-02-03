@@ -6,6 +6,7 @@ import Button from "./Button";
 import SectionTitle from "./SectionTitle";
 import TicketCard from "./TicketCard";
 import CardArticles from "./CardArticle";
+import Footer from "./Footer";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   SectionTitle,
   TicketCard,
   CardArticles,
+  Footer,
 };
