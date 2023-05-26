@@ -10,7 +10,8 @@ export default function Index(props) {
   return (
     <Link
       href={`/detailarticle?id=${id}`}
-      className={`flex flex-col  shadow-md hover:drop-shadow-md rounded-md bg-white cursor-pointer`}>
+      className={`flex flex-col  shadow-md hover:drop-shadow-md rounded-md bg-white cursor-pointer`}
+    >
       <div>
         <div className={`w-full aspect-square`}>
           <img
@@ -21,10 +22,12 @@ export default function Index(props) {
           />
         </div>
         <div className={`flex flex-col mt-3 p-5`}>
-          <div className={`text-xs font-semibold`}>
+          <div className={`text-xs font-semibold text-black`}>
             {moment(createAt).format("LLL")}
           </div>
-          <div className={`font-bold text-xl mb-2 line-clamp-2 `}>{title}</div>
+          <div className={`font-bold text-xl mb-2 line-clamp-2 text-black`}>
+            {title}
+          </div>
         </div>
       </div>
     </Link>

@@ -21,29 +21,36 @@ export default function Home({ content }) {
     <Layout title="Home">
       <Carousel images={content?.banners} />
       <SearchBox destination={content?.cities} />
-      <SectionTitle
-        title={"Mau sewa Bus ?"}
-        subtitle={
-          "Ada berbagai pilihan Bus dengan harga spesial, lho. Jangan sampai kehabisan ya!"
-        }
-      />
-      <CarToRent vehicles={content.vehicles} itemToShow={7} filterBy={"Bus"} />
-      <SectionTitle
-        title={"Kami juga menyediakan Mini Bus!"}
-        subtitle={
-          "Buat perjalanan keluarga anda lebih menyenangkan. Temukan mobil impian anda!"
-        }
-      />
-      <CarToRent
-        vehicles={content.vehicles}
-        itemToShow={11}
-        filterBy={"Mini Bus"}
-      />
-      <SectionTitle
-        title={"Baca Artikel Kami!"}
-        subtitle={"Temukan artikel menarik disini!"}
-      />
-      <ArticleList articles={content.articles} />
+
+      <div className="bg-white">
+        <SectionTitle
+          title={"Mau sewa Bus ?"}
+          subtitle={
+            "Ada berbagai pilihan Bus dengan harga spesial, lho. Jangan sampai kehabisan ya!"
+          }
+        />
+        <CarToRent
+          vehicles={content.vehicles}
+          itemToShow={7}
+          filterBy={"Bus"}
+        />
+        <SectionTitle
+          title={"Kami juga menyediakan Mini Bus!"}
+          subtitle={
+            "Buat perjalanan keluarga anda lebih menyenangkan. Temukan mobil impian anda!"
+          }
+        />
+        <CarToRent
+          vehicles={content.vehicles}
+          itemToShow={11}
+          filterBy={"Mini Bus"}
+        />
+        <SectionTitle
+          title={"Baca Artikel Kami!"}
+          subtitle={"Temukan artikel menarik disini!"}
+        />
+        <ArticleList articles={content.articles} />
+      </div>
     </Layout>
   );
 }

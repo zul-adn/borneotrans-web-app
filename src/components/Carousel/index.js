@@ -18,8 +18,7 @@ export default function Index(props) {
   };
 
   return (
-    <div className={`w-full top-0 absolute h-3/5 bg-slate-200 -z-10`}>
-      ?
+    <div className={`w-full top-0 absolute h-3/5 bg-white -z-10`}>
       <img
         // src={`${backendUrl}/banner/${imag.filename}`}
         src={

@@ -11,6 +11,7 @@ export default function Layout(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+
       {props.children}
       <Footer />
     </div>
