@@ -22,7 +22,7 @@ const getCars = () =>
 
 const getTickets = (params) =>
   axios({
-    url: `/ticket?str_date=${params.date}&from=${params.from}&to=${params.to}`,
+    url: `/ticket?main_from=${params.main_from}&main_to=${params.main_to}`,
     method: "GET",
   });
 

@@ -8,7 +8,6 @@ const backendUrl = process.env.BACKEND_URL;
 
 export default function Index(props) {
   const { images } = props;
-  console.log(images);
 
   const settings = {
     dots: true,

@@ -2,6 +2,8 @@
 import React from "react";
 import moment from "moment/moment";
 import Link from "next/link";
+import "moment/locale/id";
+moment().locale("id");
 
 const assets_url = process.env.BACKEND_URL;
 
@@ -12,11 +14,13 @@ export default function Index(props) {
       href={`/detailarticle?id=${id}`}
       className={`flex flex-col  shadow-md hover:drop-shadow-md rounded-md bg-white cursor-pointer`}
     >
+      {JSON.stringify(image)}
       <div>
         <div className={`w-full aspect-square`}>
           <img
+            // src={`${assets_url}/article/${JSON.parse(image)[0]}`}
             src={`${assets_url}/article/${image}`}
-            alt="car"
+            alt="article"
             className={"w-full h-full  rounded-t-md  object-cover"}
             loading="lazy"
           />

@@ -30,7 +30,7 @@ export default function Home({ content }) {
           }
         />
         <CarToRent
-          vehicles={content.vehicles}
+          vehicles={content?.vehicles}
           itemToShow={7}
           filterBy={"Bus"}
         />
@@ -41,7 +41,7 @@ export default function Home({ content }) {
           }
         />
         <CarToRent
-          vehicles={content.vehicles}
+          vehicles={content?.vehicles}
           itemToShow={11}
           filterBy={"Mini Bus"}
         />
@@ -49,7 +49,7 @@ export default function Home({ content }) {
           title={"Baca Artikel Kami!"}
           subtitle={"Temukan artikel menarik disini!"}
         />
-        <ArticleList articles={content.articles} />
+        <ArticleList articles={content?.articles} />
       </div>
     </Layout>
   );

@@ -11,6 +11,7 @@ import { TicketCard, SearchBox, Carousel } from "../../components";
 export default function Index({ content }) {
   useEffect(() => {
     console.log(content);
+    console.log("TES");
   }, []);
 
   function _ticketNotFound() {
@@ -25,7 +26,8 @@ export default function Index({ content }) {
     <Layout title={"Cari Tiket"}>
       <Carousel images={content?.banners} />
       <div
-        className={`lg:max-w-5xl md:max-w-5xl lg:mx-auto md:mx-auto sm:mx-auto  `}>
+        className={`lg:max-w-5xl md:max-w-5xl lg:mx-auto md:mx-auto sm:mx-auto  `}
+      >
         <SearchBox destination={content?.cities} />
         {!content && <div>Loading</div>}
         {content.tickets.data.length === 0 && _ticketNotFound()}
@@ -36,16 +38,16 @@ export default function Index({ content }) {
           let trip = content.trips.data.filter(
             (v) => v.id === Number(ticket.route_id)
           );
-
           return (
             <TicketCard
               key={`ticket-${index}`}
-              from={ticket.from}
-              to={ticket.to}
+              from={ticket.main_from}
+              to={ticket.main_to}
               trip={trip}
               date={ticket.date}
               time={ticket.time}
               partner={partner}
+              ticket_partner={ticket.partner_id}
             />
           );
         })}
@@ -56,7 +58,6 @@ export default function Index({ content }) {
 
 export async function getServerSideProps(context) {
   try {
-    console.log(context);
     const tickets = await getTickets(context.query);
     const trips = await getTrips();
     const partners = await getPartner();
@@ -73,11 +74,13 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: `/login`,
-      },
-    };
+    console.log(error);
+    return error;
+    // return {
+    //   redirect: {
+    //     permanent: false,
+    //     destination: `/login`,
+    //   },
+    // };
   }
 }

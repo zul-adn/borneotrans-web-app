@@ -8,8 +8,9 @@ export default function Index(props) {
   return (
     <div className={`max-w-5xl mx-auto mt-10`}>
       <div
-        className={`grid m-auto grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 gap-2 lg:gap-2`}>
-        {vehicles.data
+        className={`grid m-auto grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 gap-2 lg:gap-2`}
+      >
+        {vehicles?.data
           .filter((car) =>
             filterBy === "Bus"
               ? car.maintype === ""

@@ -4,6 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "..";
 import Link from "next/link";
+import moment from "moment";
+import { registerLocale } from "react-datepicker";
+import id from "date-fns/locale/id";
+
+registerLocale("id", id);
 
 export default function Index(props) {
   const { destination } = props;
@@ -28,9 +33,15 @@ export default function Index(props) {
     setValue({ ...values, [prop]: item.name });
   };
 
+  const onChangeDate = (e) => {
+    const newDate = moment(new Date(e.target.value)).format("DD/MM/YYYY");
+    setValue({ ...values, date: newDate });
+  };
+
   return (
     <div
-      className={`lg:max-w-5xl md:max-w-5xl lg:mx-auto md:mx-auto sm:mx-auto  border rounded mt-80 bg-white z-50 shadow-lg `}>
+      className={`lg:max-w-5xl md:max-w-5xl lg:mx-auto md:mx-auto sm:mx-auto  border rounded mt-80 bg-white z-50 shadow-lg `}
+    >
       <div className="flex items-center justify-start border-b px-5 py-3">
         <span className={`text-lg`}>Hai kamu, mau ke mana?</span>
       </div>
@@ -63,10 +74,10 @@ export default function Index(props) {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Tanggal
           </label>
-          <DatePicker
+          <input
             className=" appearance-none border w-full py-3 px-3 bg-white text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            selected={values.date}
-            onChange={(date) => setValue({ ...values, date: date })}
+            type="date"
+            onChange={onChangeDate}
           />
         </div>
       </div>
@@ -74,9 +85,8 @@ export default function Index(props) {
         {/* <Button label={"Cari"} onClick={() => {}} /> */}
         <Link
           className={`w-full py-2 rounded px-5 bg-blue-500 -mt-5 mr-1 text-center text-sm xl:text-md lg:text-md text-white`}
-          href={`tickets?from=${values.from}&to=${values.to}&date=${values.date
-            .toISOString()
-            .substring(0, 10)}`}>
+          href={`tickets?main_from=${values.from}&main_to=${values.to}&date=${values.date}`}
+        >
           Cari Ticket
         </Link>
       </div>
