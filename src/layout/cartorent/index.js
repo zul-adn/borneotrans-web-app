@@ -23,7 +23,7 @@ export default function Index(props) {
 
             return (
               <>
-                {images}
+                {/* {images} */}
                 <Card
                   key={`vehicle-${index}`}
                   name={vehicle?.name}

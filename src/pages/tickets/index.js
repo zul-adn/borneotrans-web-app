@@ -15,6 +15,7 @@ export default function Index({ content }) {
   }, []);
 
   const [showModal, setShowModal] = React.useState(false);
+  const [tickectProps, setTicketProps] = React.useState(null);
 
   function _ticketNotFound() {
     return (
@@ -22,6 +23,12 @@ export default function Index({ content }) {
         <div>Ticket Not Found</div>
       </div>
     );
+  }
+
+  function booking(props) {
+    setShowModal(!showModal);
+    console.log(props);
+    setTicketProps(props);
   }
 
   return (
@@ -50,12 +57,13 @@ export default function Index({ content }) {
               time={ticket.time}
               partner={partner}
               ticket_partner={ticket.partner_id}
+              onClick={(v) => booking(v)}
             />
           );
         })}
       </div>
       <Modal
-        show={true}
+        show={showModal}
         setModalClose={() => {
           setShowModal(!showModal);
         }}
@@ -98,6 +106,21 @@ export default function Index({ content }) {
             placeholder="Jumlah Ticket"
           />
         </form>
+        <div className="flex flex-col mt-4">
+          <span className="font-bold">Detail Tiket</span>
+          <span className="text-sm mt-2">Berangkat Dari</span>
+          <span className="font-semibold">
+            {tickectProps?.from} ( {tickectProps?.trip[0].from} )
+          </span>
+          <span className="text-sm mt-2">Tujuan</span>
+          <span className="font-semibold">
+            {tickectProps?.to} ( {tickectProps?.trip[0].to} ){" "}
+          </span>
+          <span className="text-sm mt-2">Tanggal / Jam</span>
+          <span className="font-semibold">
+            {tickectProps?.date} - {tickectProps?.time}
+          </span>
+        </div>
       </Modal>
     </Layout>
   );

@@ -28,7 +28,6 @@ export default function Index(props) {
         className={`w-full h-full object-cover`}
         alt={"alt"}
       />
-      ?
     </div>
   );
 }
