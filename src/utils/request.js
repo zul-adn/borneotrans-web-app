@@ -38,6 +38,12 @@ const getPartner = () =>
     method: "GET",
   });
 
+const getAdmin = () =>
+  axios({
+    url: "/users?$limit=50",
+    method: "GET",
+  });
+
 const getArticles = () =>
   axios({
     url: "/article",
@@ -59,4 +65,5 @@ export {
   getPartner,
   getArticles,
   getArticleById,
+  getAdmin,
 };
