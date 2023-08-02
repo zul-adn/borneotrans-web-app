@@ -10,7 +10,7 @@ const searchTicket = () => {};
 
 const getDestinations = () =>
   axios({
-    url: "/cities-destination",
+    url: "/cities-destination?$limit=100",
     method: "GET",
   });
 

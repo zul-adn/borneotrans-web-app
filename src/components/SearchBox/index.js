@@ -12,11 +12,30 @@ registerLocale("id", id);
 
 export default function Index(props) {
   const { destination } = props;
+  React.useEffect(() => {
+    mergeCities();
+  }, []);
+
   const [values, setValue] = React.useState({
     from: "",
     to: "",
     date: new Date(),
   });
+
+  const [cities, setCities] = React.useState([]);
+
+  function mergeCities() {
+    var uniq = {};
+    var arr = [...destination.data];
+    var result = arr.reduce((unique, o) => {
+      if (!unique.some((obj) => obj.name.trim() === o.name.trim())) {
+        unique.push(o);
+      }
+      return unique;
+    }, []);
+
+    setCities(result);
+  }
 
   const formatResult = (item) => {
     return (
@@ -27,9 +46,6 @@ export default function Index(props) {
   };
 
   const handleOnSelectRoute = (prop) => (item) => {
-    console.log(item.name);
-    // const datas = states.routeDatas.filter((v) => v.id === item.id);
-    // console.log(datas.name);
     setValue({ ...values, [prop]: item.name });
   };
 
@@ -51,7 +67,7 @@ export default function Index(props) {
             Berangkat dari
           </label>
           <ReactSearchAutocomplete
-            items={destination?.data}
+            items={cities}
             onSelect={handleOnSelectRoute("from")}
             formatResult={formatResult}
             placeholder={"Berangkat dari"}
@@ -63,7 +79,7 @@ export default function Index(props) {
             Ke Kota
           </label>
           <ReactSearchAutocomplete
-            items={destination?.data}
+            items={cities}
             onSelect={handleOnSelectRoute("to")}
             formatResult={formatResult}
             placeholder={"Ke Kota"}

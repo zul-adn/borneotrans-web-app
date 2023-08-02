@@ -10,13 +10,14 @@ import { CardArticles, Carousel, SearchBox, SectionTitle } from "../components";
 import CarToRent from "../layout/cartorent";
 import ArticleList from "../layout/articlelist";
 import Layout from "./Layout";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { carToRent, destinations } from "../mockup/datas";
 
 export default function Home({ content }) {
   useEffect(() => {
     console.log("Content", content);
   }, []);
+
   return (
     <Layout title="Home">
       <Carousel images={content?.banners} />
