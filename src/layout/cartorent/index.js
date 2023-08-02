@@ -22,16 +22,19 @@ export default function Index(props) {
             let images = JSON.parse(vehicle?.thumbnail);
 
             return (
-              <Card
-                key={`vehicle-${index}`}
-                name={vehicle?.name}
-                brand={vehicle?.brand}
-                availability={vehicle?.available}
-                price={vehicle?.price_per_day}
-                owndriven={vehicle?.own_driving}
-                maintype={vehicle?.maintype}
-                image={images[Math.floor(Math.random() * images.length)]}
-              />
+              <>
+                {images}
+                <Card
+                  key={`vehicle-${index}`}
+                  name={vehicle?.name}
+                  brand={vehicle?.brand}
+                  availability={vehicle?.available}
+                  price={vehicle?.price_per_day}
+                  owndriven={vehicle?.own_driving}
+                  maintype={vehicle?.maintype}
+                  image={images[Math.floor(Math.random() * images.length)]}
+                />
+              </>
             );
           })}
       </div>

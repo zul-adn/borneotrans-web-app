@@ -10,7 +10,8 @@ export default function Index(props) {
     props;
   return (
     <div
-      className={`flex flex-col drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}>
+      className={`flex flex-col drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}
+    >
       <div>
         <div className={`w-full aspect-square`}>
           <img
@@ -28,7 +29,8 @@ export default function Index(props) {
               availability
                 ? "text-green-800 text-sm font-semibold"
                 : " text-gray-500 text-sm"
-            }  `}>
+            }  `}
+          >
             {availability ? "Tersedia" : "Tidak Tersedia"}
           </div>
         </div>
@@ -37,7 +39,8 @@ export default function Index(props) {
         <div
           className={
             "text-right mb-7 text-lg text-orange-600 font-semibold mr-2"
-          }>
+          }
+        >
           Rp {price?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
         </div>
         <Button onClick={() => {}} label={"Pesan Sekarang"} />
@@ -46,7 +49,8 @@ export default function Index(props) {
         <div
           className={
             "absolute bg-green-500 right-0 mr-3 mt-2 px-5 rounded text-white text-sm py-1"
-          }>
+          }
+        >
           {" "}
           Lepas Kunci
         </div>

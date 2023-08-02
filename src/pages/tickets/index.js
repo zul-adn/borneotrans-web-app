@@ -6,13 +6,15 @@ import {
   getTrips,
   getDestinations,
 } from "../../utils/request";
-import { TicketCard, SearchBox, Carousel } from "../../components";
+import { TicketCard, SearchBox, Carousel, Modal } from "../../components";
 
 export default function Index({ content }) {
   useEffect(() => {
     console.log(content);
     console.log("TES");
   }, []);
+
+  const [showModal, setShowModal] = React.useState(false);
 
   function _ticketNotFound() {
     return (
@@ -52,6 +54,51 @@ export default function Index({ content }) {
           );
         })}
       </div>
+      <Modal
+        show={true}
+        setModalClose={() => {
+          setShowModal(!showModal);
+        }}
+        title={`Pesan Tiket`}
+        width={"3/4"}
+        onSubmit={() => {}}
+      >
+        <form>
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            Nama Pemesan
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Nama Pemesan"
+          />
+          <label
+            class="block text-gray-700 text-sm font-bold my-2"
+            for="username"
+          >
+            Nomor Handphone
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Nomor Handphone"
+          />
+          <label
+            class="block text-gray-700 text-sm font-bold my-2"
+            for="username"
+          >
+            Jumlah Tiket
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="number"
+            placeholder="Jumlah Ticket"
+          />
+        </form>
+      </Modal>
     </Layout>
   );
 }

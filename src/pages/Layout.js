@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { Navbar, Footer } from "../components";
+import { Navbar, Footer, Modal } from "../components";
 
 export default function Layout(props) {
   return (
@@ -13,6 +13,7 @@ export default function Layout(props) {
       <Navbar />
 
       {props.children}
+
       <Footer />
     </div>
   );

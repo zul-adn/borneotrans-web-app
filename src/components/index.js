@@ -7,6 +7,7 @@ import SectionTitle from "./SectionTitle";
 import TicketCard from "./TicketCard";
 import CardArticles from "./CardArticle";
 import Footer from "./Footer";
+import Modal from "./Modal";
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   TicketCard,
   CardArticles,
   Footer,
+  Modal,
 };
