@@ -10,13 +10,17 @@ import {
 import { TicketCard, SearchBox, Carousel, Modal } from "../../components";
 
 export default function Index({ content }) {
-  useEffect(() => {
-    console.log(content);
-    console.log("TES");
-  }, []);
-
   const [showModal, setShowModal] = React.useState(false);
   const [tickectProps, setTicketProps] = React.useState(null);
+  const [values, setValue] = React.useState({
+    name: "",
+    phoneNumber: "",
+    totalTicket: "",
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValue({ ...values, [prop]: event.target.value });
+  };
 
   function _ticketNotFound() {
     return (
@@ -30,6 +34,17 @@ export default function Index({ content }) {
     setShowModal(!showModal);
     console.log(props);
     setTicketProps(props);
+  }
+
+  function sendWA() {
+    const phoneNumber =
+      content.admin.data[Math.floor(Math.random() * content.admin.data.length)];
+    console.log(phoneNumber);
+    console.log(content.admin);
+    window.open(
+      `https://wa.me/${phoneNumber.wa_number}?text=Hi%20${phoneNumber.username}%2C%0ASaya%20${values.name}%20akan%20memesan%20tiket%20dengan%20tujuan%20${tickectProps.from}(${tickectProps?.trip[0].from})%20ke%20${tickectProps.to}(${tickectProps?.trip[0].to})%20pada%20tanggal%20${tickectProps.date}%20jam%20${tickectProps.time}.%20dengan%20jumlah%20tiket%20${values.totalTicket}%20pcs.%0AHubungi%20saya%20di%20${values.phoneNumber}%20untuk%20informasi%20tiket%20yang%20tersedia.%0ATerima%20Kasih.%0A`,
+      "_blank"
+    );
   }
 
   return (
@@ -70,7 +85,8 @@ export default function Index({ content }) {
         }}
         title={`Pesan Tiket`}
         width={"3/4"}
-        onSubmit={() => {}}
+        onSubmit={() => sendWA()}
+        cb={() => sendWA()}
       >
         <form>
           <label
@@ -83,6 +99,9 @@ export default function Index({ content }) {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             placeholder="Nama Pemesan"
+            value={values.name}
+            onChange={handleChange("name")}
+            required
           />
           <label
             class="block text-gray-700 text-sm font-bold my-2"
@@ -94,6 +113,9 @@ export default function Index({ content }) {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             placeholder="Nomor Handphone"
+            value={values.phoneNumber}
+            onChange={handleChange("phoneNumber")}
+            required
           />
           <label
             class="block text-gray-700 text-sm font-bold my-2"
@@ -105,6 +127,9 @@ export default function Index({ content }) {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="number"
             placeholder="Jumlah Ticket"
+            value={values.totalTicket}
+            onChange={handleChange("totalTicket")}
+            required
           />
         </form>
         <div className="flex flex-col mt-4">
