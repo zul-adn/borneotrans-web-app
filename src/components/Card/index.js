@@ -6,8 +6,16 @@ import { Button } from "..";
 const assets_url = process.env.BACKEND_URL;
 
 export default function Index(props) {
-  const { image, name, brand, price, availability, owndriven, maintype } =
-    props;
+  const {
+    image,
+    name,
+    brand,
+    price,
+    availability,
+    owndriven,
+    maintype,
+    onClick,
+  } = props;
   return (
     <div
       className={`flex flex-col drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}
@@ -43,7 +51,7 @@ export default function Index(props) {
         >
           Rp {price?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
         </div>
-        <Button onClick={() => {}} label={"Pesan Sekarang"} />
+        <Button onClick={onClick} label={"Pesan Sekarang"} />
       </div>
       {owndriven ? (
         <div
