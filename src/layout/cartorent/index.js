@@ -1,9 +1,12 @@
 import React from "react";
 import { Card, Modal } from "../../components";
 import { carToRent } from "../../mockup/datas";
+import moment from "moment/moment";
+import "moment/locale/id";
+moment().locale("id");
 
 export default function Index(props) {
-  const { vehicles, itemToShow, filterBy } = props;
+  const { vehicles, itemToShow, filterBy, admin } = props;
 
   const [showModal, setShowModal] = React.useState(false);
   const [tickectProps, setTicketProps] = React.useState(null);
@@ -12,6 +15,8 @@ export default function Index(props) {
     phoneNumber: "",
     rentStartDate: "",
     totalDays: "",
+    pickUpPlace: "",
+    time: "",
   });
 
   const handleChange = (prop) => (event) => {
@@ -26,12 +31,10 @@ export default function Index(props) {
 
   function sendWA() {
     const phoneNumber =
-      props.content.admin.data[
-        Math.floor(Math.random() * content.admin.data.length)
-      ];
+      admin.data[Math.floor(Math.random() * admin.data.length)];
 
     window.open(
-      `https://wa.me/${phoneNumber.wa_number}?text=Hi%20${phoneNumber.username}%2C%0ASaya%20${values.name}%20akan%20memesan%20tiket%20dengan%20tujuan%20${tickectProps.from}(${tickectProps?.trip[0].from})%20ke%20${tickectProps.to}(${tickectProps?.trip[0].to})%20pada%20tanggal%20${tickectProps.date}%20jam%20${tickectProps.time}.%20dengan%20jumlah%20tiket%20${values.totalTicket}%20pcs.%0AHubungi%20saya%20di%20${values.phoneNumber}%20untuk%20informasi%20tiket%20yang%20tersedia.%0ATerima%20Kasih.%0A`,
+      `https://wa.me/${phoneNumber.wa_number}?text=Informasi%20pemesanan%20%3A%0A%E2%80%A2%20Nama%20%3A%20${values.name}%0A%E2%80%A2%20Jenis%20Unit%20%3A%20${tickectProps.brand}(${tickectProps.name})%0A%E2%80%A2%20Alamat%20Jemput%20%3A%20${values.pickUpPlace}%0A%E2%80%A2%20Tanggal%20%3A%20${values.rentStartDate}%0A%E2%80%A2%20Jumlah%20Hari%20%3A%20${values.totalDays}%0A%E2%80%A2%20Whatsapp%20%3A%20${values.phoneNumber}%0A%0AKami%20akan%20segera%20konfirmasi%20jika%20tiket%20tersedia.%20%0ATrimakasih.%0Aborneotrans.com`,
       "_blank"
     );
   }
@@ -79,8 +82,8 @@ export default function Index(props) {
         setModalClose={() => {
           setShowModal(!showModal);
         }}
-        title={`Pesan Tiket`}
-        width={"3/4"}
+        title={`Rental Mobil`}
+        width={"1/2"}
         onSubmit={() => sendWA()}
         cb={() => sendWA()}
       >
@@ -117,6 +120,34 @@ export default function Index(props) {
             class="block text-gray-700 text-sm font-bold my-2"
             for="username"
           >
+            Lokasi Penjemputan
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Lokasi Penjemputan"
+            value={values.pickUpPlace}
+            onChange={handleChange("pickUpPlace")}
+            required
+          />
+          <label
+            class="block text-gray-700 text-sm font-bold my-2"
+            for="username"
+          >
+            Tanggal Penjemputan
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="date"
+            placeholder="Jumlah Ticket"
+            value={values.totalTicket}
+            onChange={onChangeDate}
+            required
+          />
+          <label
+            class="block text-gray-700 text-sm font-bold my-2"
+            for="username"
+          >
             Jumlah hari pemakaian
           </label>
           <input
@@ -125,20 +156,6 @@ export default function Index(props) {
             placeholder="Jumlah Hari Pemakaian"
             value={values.totalTicket}
             onChange={handleChange("totalDays")}
-            required
-          />
-          <label
-            class="block text-gray-700 text-sm font-bold my-2"
-            for="username"
-          >
-            Tanggal Pengambilan
-          </label>
-          <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="date"
-            placeholder="Jumlah Ticket"
-            value={values.totalTicket}
-            onChange={onChangeDate}
             required
           />
         </form>
@@ -152,37 +169,4 @@ export default function Index(props) {
       </Modal>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  try {
-    const tickets = await getTickets(context.query);
-    const trips = await getTrips();
-    const partners = await getPartner();
-    const cities = await getDestinations();
-    const admin = await getAdmin();
-
-    // console.log(admin);
-
-    return {
-      props: {
-        content: {
-          tickets,
-          trips,
-          partners,
-          cities,
-          admin,
-        },
-      },
-    };
-  } catch (error) {
-    console.log(error);
-    return error;
-    // return {
-    //   redirect: {
-    //     permanent: false,
-    //     destination: `/login`,
-    //   },
-    // };
-  }
 }

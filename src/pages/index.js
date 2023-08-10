@@ -5,6 +5,7 @@ import {
   getCars,
   getDestinations,
   getArticles,
+  getAdmin,
 } from "../utils/request";
 import { CardArticles, Carousel, SearchBox, SectionTitle } from "../components";
 import CarToRent from "../layout/cartorent";
@@ -34,6 +35,7 @@ export default function Home({ content }) {
           vehicles={content?.vehicles}
           itemToShow={7}
           filterBy={"Bus"}
+          admin={content?.admin}
         />
         <SectionTitle
           title={"Kami juga menyediakan Mini Bus!"}
@@ -45,6 +47,7 @@ export default function Home({ content }) {
           vehicles={content?.vehicles}
           itemToShow={11}
           filterBy={"Mini Bus"}
+          admin={content?.admin}
         />
         <SectionTitle
           title={"Baca Artikel Kami!"}
@@ -62,6 +65,7 @@ export async function getServerSideProps() {
     const cities = await getDestinations();
     const vehicles = await getCars();
     const articles = await getArticles();
+    const admin = await getAdmin();
 
     return {
       props: {
@@ -70,6 +74,7 @@ export async function getServerSideProps() {
           cities,
           vehicles,
           articles,
+          admin,
         },
       },
     };
