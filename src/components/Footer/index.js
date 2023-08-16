@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export default function index() {
+const assets_url = process.env.BACKEND_URL;
+
+export default function index({ content }) {
+  useEffect(() => {
+    console.log("partner", content.partners);
+  }, [content]);
+
   return (
     <footer className="text-center bg-gray-900 text-white mt-20">
       <div className="max-w-5xl mx-auto px-4">
@@ -84,6 +90,17 @@ export default function index() {
 
             <div className="mb-6 flex flex-col justify-start items-start">
               <h5 className="uppercase font-bold mb-2.5">Partners</h5>
+              <div class="grid grid-cols-4 gap-4 mt-4">
+                {content?.partners.data.slice(0, 11).map((v, i) => (
+                  <div key={i} title={v.name}>
+                    <img
+                      src={`${assets_url}/partners/${v.img}`}
+                      className="rounded-full aspect-square"
+                      style={{ width: 50 }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="mb-6 flex flex-col justify-start items-start">

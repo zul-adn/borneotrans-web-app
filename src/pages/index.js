@@ -6,6 +6,7 @@ import {
   getDestinations,
   getArticles,
   getAdmin,
+  getPartner,
 } from "../utils/request";
 import { CardArticles, Carousel, SearchBox, SectionTitle } from "../components";
 import CarToRent from "../layout/cartorent";
@@ -20,7 +21,7 @@ export default function Home({ content }) {
   }, []);
 
   return (
-    <Layout title="Home">
+    <Layout title="Home" content={content}>
       <Carousel images={content?.banners} />
       <SearchBox destination={content?.cities} />
 
@@ -66,6 +67,7 @@ export async function getServerSideProps() {
     const vehicles = await getCars();
     const articles = await getArticles();
     const admin = await getAdmin();
+    const partners = await getPartner();
 
     return {
       props: {
@@ -75,6 +77,7 @@ export async function getServerSideProps() {
           vehicles,
           articles,
           admin,
+          partners,
         },
       },
     };
