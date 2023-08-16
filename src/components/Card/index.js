@@ -15,13 +15,14 @@ export default function Index(props) {
     owndriven,
     maintype,
     onClick,
+    onImageClick,
   } = props;
   return (
     <div
       className={`flex flex-col drop-shadow-md hover:drop-shadow-xl rounded-md p-2 bg-white cursor-pointer`}
     >
       <div>
-        <div className={`w-full aspect-square`}>
+        <div className={`w-full aspect-square`} onClick={onImageClick}>
           <img
             src={`${assets_url}/vehicles/${image}`}
             alt="car"

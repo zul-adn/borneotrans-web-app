@@ -26,7 +26,7 @@ export default function Index(props) {
 
   function mergeCities() {
     var uniq = {};
-    var arr = [...destination.data];
+    var arr = [...destination?.data];
     var result = arr.reduce((unique, o) => {
       if (!unique.some((obj) => obj.name.trim() === o.name.trim())) {
         unique.push(o);

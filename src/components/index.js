@@ -8,6 +8,7 @@ import TicketCard from "./TicketCard";
 import CardArticles from "./CardArticle";
 import Footer from "./Footer";
 import Modal from "./Modal";
+import ImageViewer from "./ImageViewer";
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   CardArticles,
   Footer,
   Modal,
+  ImageViewer,
 };

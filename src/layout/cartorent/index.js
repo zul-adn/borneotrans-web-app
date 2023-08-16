@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Modal } from "../../components";
+import { Card, Modal, ImageViewer } from "../../components";
 import { carToRent } from "../../mockup/datas";
 import moment from "moment/moment";
 import "moment/locale/id";
@@ -10,6 +10,8 @@ export default function Index(props) {
 
   const [showModal, setShowModal] = React.useState(false);
   const [tickectProps, setTicketProps] = React.useState(null);
+  const [images, setImages] = React.useState(null);
+  const [showPreview, setShowPreview] = React.useState(false);
   const [values, setValue] = React.useState({
     name: "",
     phoneNumber: "",
@@ -43,8 +45,18 @@ export default function Index(props) {
     setValue({ ...values, rentStartDate: newDate });
   };
 
+  const showImage = (images) => {
+    setShowPreview(!showPreview);
+    setImages(images);
+  };
+
   return (
     <div className={`max-w-5xl mx-auto mt-10`}>
+      <ImageViewer
+        show={showPreview}
+        images={images}
+        setShow={(v) => setShowPreview(v)}
+      />
       <div
         className={`grid m-auto grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 gap-2 lg:gap-2`}
       >
@@ -72,6 +84,7 @@ export default function Index(props) {
                   maintype={vehicle?.maintype}
                   image={images[Math.floor(Math.random() * images.length)]}
                   onClick={() => booking(vehicle)}
+                  onImageClick={() => showImage(images)}
                 />
               </>
             );
