@@ -4,7 +4,7 @@ const assets_url = process.env.BACKEND_URL;
 
 export default function index({ content }) {
   useEffect(() => {
-    console.log("partner", content.partners);
+    console.log("partner", content?.partners);
   }, [content]);
 
   return (
