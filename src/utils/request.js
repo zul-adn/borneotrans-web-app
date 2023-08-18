@@ -16,7 +16,7 @@ const getDestinations = () =>
 
 const getCars = () =>
   axios({
-    url: "/vehicle-details",
+    url: "/vehicle-details?$limit=100",
     method: "GET",
   });
 
@@ -46,7 +46,7 @@ const getAdmin = () =>
 
 const getArticles = () =>
   axios({
-    url: "/article",
+    url: "/article?$limit=50",
     method: "GET",
   });
 

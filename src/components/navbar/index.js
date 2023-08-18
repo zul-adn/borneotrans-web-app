@@ -7,9 +7,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <span className="text-2xl text-gray-900 font-semibold">Logo</span>
           <div className="flex space-x-8 text-gray-900">
-            <a href="#">Home</a>
-            <a href="#">Article</a>
-            <a href="#">Rent</a>
+            <a href="/">Home</a>
+            <a href="/article">Article</a>
+            <a href="/rentcar">Rent</a>
             <a href="#">Contact us</a>
           </div>
         </div>
