@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const assets_url = process.env.BACKEND_URL;
@@ -14,10 +15,10 @@ export default function Navbar({ content }) {
             loading="lazy"
           />
           <div className="flex space-x-8 text-gray-900">
-            <a href="/">Home</a>
-            <a href="/article">Article</a>
-            <a href="/rentcar">Rent</a>
-            <a href="#">Contact us</a>
+            <Link href="/">Home</Link>
+            <Link href="/article">Article</Link>
+            <Link href="/rentcar">Rent</Link>
+            <Link href="#">Contact us</Link>
           </div>
         </div>
       </div>
