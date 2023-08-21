@@ -32,15 +32,13 @@ export default function Index({ content }) {
 
   function booking(props) {
     setShowModal(!showModal);
-    console.log(props);
     setTicketProps(props);
   }
 
   function sendWA() {
     const phoneNumber =
       content.admin.data[Math.floor(Math.random() * content.admin.data.length)];
-    console.log(phoneNumber);
-    console.log(content.admin);
+
     window.open(
       `https://wa.me/${phoneNumber.wa_number}?text=Hi%20${phoneNumber.username}%2C%0ASaya%20${values.name}%20akan%20memesan%20tiket%20dengan%20tujuan%20${tickectProps.from}(${tickectProps?.trip[0].from})%20ke%20${tickectProps.to}(${tickectProps?.trip[0].to})%20pada%20tanggal%20${tickectProps.date}%20jam%20${tickectProps.time}.%20dengan%20jumlah%20tiket%20${values.totalTicket}%20pcs.%0AHubungi%20saya%20di%20${values.phoneNumber}%20untuk%20informasi%20tiket%20yang%20tersedia.%0ATerima%20Kasih.%0A`,
       "_blank"
@@ -48,7 +46,7 @@ export default function Index({ content }) {
   }
 
   return (
-    <Layout title={"Cari Tiket"}>
+    <Layout title={"Cari Tiket"} content={content}>
       <Carousel images={content?.banners} />
       <div
         className={`lg:max-w-5xl md:max-w-5xl lg:mx-auto md:mx-auto sm:mx-auto  `}

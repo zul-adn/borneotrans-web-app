@@ -56,6 +56,12 @@ const getArticleById = (id) =>
     method: "GET",
   });
 
+const getConfiguration = () =>
+  axios({
+    url: "/configuration",
+    method: "GET",
+  });
+
 export {
   getBanners,
   getDestinations,
@@ -66,4 +72,5 @@ export {
   getArticles,
   getArticleById,
   getAdmin,
+  getConfiguration,
 };

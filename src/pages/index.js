@@ -7,6 +7,7 @@ import {
   getArticles,
   getAdmin,
   getPartner,
+  getConfiguration,
 } from "../utils/request";
 import {
   CardArticles,
@@ -101,6 +102,7 @@ export async function getServerSideProps() {
     const articles = await getArticles();
     const admin = await getAdmin();
     const partners = await getPartner();
+    const configuration = await getConfiguration();
 
     return {
       props: {
@@ -111,6 +113,7 @@ export async function getServerSideProps() {
           articles,
           admin,
           partners,
+          configuration,
         },
       },
     };

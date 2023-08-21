@@ -18,16 +18,24 @@ export default function Index(props) {
 
   return (
     <div className={`w-full top-0 absolute h-3/5 bg-white -z-10`}>
-      <img
-        // src={`${backendUrl}/banner/${imag.filename}`}
-        src={
-          "https://images.unsplash.com/photo-1620561099217-990c648c8502?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        }
-        // height={300}
-        // width={300}
-        className={`w-full h-full object-cover`}
-        alt={"alt"}
-      />
+      <Carousel
+        autoPlay
+        infiniteLoop
+        transitionTime={2000}
+        interval={5000}
+        dynamicHeight={200}
+        showArrows={false}
+        showThumbs={false}
+      >
+        {images.data.map((img, i) => (
+          <div style={{ height: 950 }}>
+            <img
+              className={`w-full h-3/5 mb-10 object-cover`}
+              src={`${backendUrl}/banner/${img.filename}`}
+            />
+          </div>
+        ))}
+      </Carousel>
     </div>
   );
 }

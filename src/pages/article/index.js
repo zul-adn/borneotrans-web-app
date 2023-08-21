@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import Layout from "../Layout";
 import { SectionTitle } from "../../components";
 import CarToRent from "../../layout/cartorent";
-import { getCars, getArticles, getPartner } from "../../utils/request";
+import {
+  getCars,
+  getArticles,
+  getPartner,
+  getConfiguration,
+} from "../../utils/request";
 import ArticleList from "../../layout/articlelist";
 
 export default function Index({ content }) {
@@ -31,12 +36,14 @@ export async function getServerSideProps() {
   try {
     const partners = await getPartner();
     const articles = await getArticles();
+    const configuration = await getConfiguration();
 
     return {
       props: {
         content: {
           articles,
           partners,
+          configuration,
         },
       },
     };

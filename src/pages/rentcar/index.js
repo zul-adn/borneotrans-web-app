@@ -9,6 +9,7 @@ import {
   getArticles,
   getAdmin,
   getPartner,
+  getConfiguration,
 } from "../../utils/request";
 
 export default function Index({ content }) {
@@ -51,6 +52,7 @@ export async function getServerSideProps() {
     const vehicles = await getCars();
     const admin = await getAdmin();
     const partners = await getPartner();
+    const configuration = await getConfiguration();
 
     return {
       props: {
@@ -58,6 +60,7 @@ export async function getServerSideProps() {
           vehicles,
           admin,
           partners,
+          configuration,
         },
       },
     };

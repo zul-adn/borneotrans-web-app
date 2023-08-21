@@ -8,6 +8,7 @@ export default function Index(props) {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [imageToShow, setImageToShow] = useState([]);
+  const [imageReady, setImageReady] = useState(false);
 
   useEffect(() => {
     const cpImageToShow = [...imageToShow];
@@ -15,6 +16,7 @@ export default function Index(props) {
       cpImageToShow.push(`${assets_url}/vehicles/${img}`);
     });
     setImageToShow(cpImageToShow);
+    setImageReady(true);
   }, [images]);
 
   const openImageViewer = useCallback((index) => {
@@ -29,7 +31,7 @@ export default function Index(props) {
 
   return (
     <div>
-      {show && (
+      {show && imageReady && (
         <ImageViewer
           src={imageToShow}
           currentIndex={currentImage}

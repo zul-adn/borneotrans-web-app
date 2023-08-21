@@ -12,11 +12,11 @@ export default function index({ content }) {
       <div className="max-w-5xl mx-auto px-4">
         <div className="container px-6 pt-6">
           <div className="grid lg:grid-cols-3 md:grid-cols-2">
-            <div className="mb-6 flex flex-col justify-center items-start">
+            <div className="mb-6 flex flex-col justify-start items-center pr-10 pt-10">
               <img
-                src={`https://www.spaceroastery.com/img/placeholder-logo.png`}
+                src={`${assets_url}/config/${content?.configuration.data[0].logo}`}
                 alt="car"
-                className={"w-36"}
+                className={"w-5/6 mb-4"}
                 loading="lazy"
               />
               <div className="flex justify-center mb-6">
@@ -105,13 +105,13 @@ export default function index({ content }) {
 
             <div className="mb-6 flex flex-col justify-start items-start">
               <h5 className="uppercase font-bold mb-2.5">About us</h5>
-              <div className="text-justify">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industrys standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged.
+              <div className="w-full">
+                <div
+                  className="text-justify"
+                  dangerouslySetInnerHTML={{
+                    __html: content?.configuration.data[0].about_us,
+                  }}
+                />
               </div>
             </div>
           </div>
