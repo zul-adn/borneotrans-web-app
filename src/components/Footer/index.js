@@ -3,10 +3,6 @@ import React, { useEffect } from "react";
 const assets_url = process.env.BACKEND_URL;
 
 export default function index({ content }) {
-  useEffect(() => {
-    console.log("partner", content?.partners);
-  }, [content]);
-
   return (
     <footer className="text-center bg-gray-900 text-white mt-20">
       <div className="max-w-5xl mx-auto px-4">

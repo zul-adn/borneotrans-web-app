@@ -28,7 +28,7 @@ export default function Index(props) {
         showThumbs={false}
       >
         {images.data.map((img, i) => (
-          <div style={{ height: 950 }}>
+          <div style={{ height: 950 }} key={i}>
             <img
               className={`w-full h-3/5 mb-10 object-cover`}
               src={`${backendUrl}/banner/${img.filename}`}
