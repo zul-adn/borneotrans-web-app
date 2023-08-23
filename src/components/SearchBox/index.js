@@ -13,6 +13,7 @@ registerLocale("id", id);
 export default function Index(props) {
   const { destination } = props;
   React.useEffect(() => {
+    console.log(destination);
     mergeCities();
   }, []);
 

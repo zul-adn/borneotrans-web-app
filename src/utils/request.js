@@ -22,13 +22,13 @@ const getCars = () =>
 
 const getTickets = (params) =>
   axios({
-    url: `/ticket?main_from=${params.main_from}&main_to=${params.main_to}`,
+    url: `/ticket?$limit=100?main_from=${params.main_from}&main_to=${params.main_to}&date=${params.date}`,
     method: "GET",
   });
 
 const getTrips = () =>
   axios({
-    url: "/routes-trip",
+    url: "/routes-trip?$limit=100",
     method: "GET",
   });
 
