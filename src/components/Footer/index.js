@@ -18,10 +18,13 @@ export default function index({ content }) {
               <div className="flex justify-center mb-6">
                 <a
                   href={`https://www.facebook.com/${
-                    JSON.parse(content?.configuration.data[0].social_media)[1][
-                      "values"
-                    ]
+                    content?.configuration.data[0].social_media
+                      ? JSON.parse(
+                          content?.configuration.data[0].social_media
+                        )[1]["values"]
+                      : "#"
                   }`}
+                  rel="noreferrer"
                   target="_blank"
                   type="button"
                   className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
@@ -45,10 +48,13 @@ export default function index({ content }) {
 
                 <a
                   href={`https://goo.gl/maps/${
-                    JSON.parse(content?.configuration.data[0].social_media)[2][
-                      "values"
-                    ]
+                    content?.configuration.data[0].social_media
+                      ? JSON.parse(
+                          content?.configuration.data[0].social_media
+                        )[2]["values"]
+                      : "#"
                   }`}
+                  rel="noreferrer"
                   type="button"
                   target="_blank"
                   className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
@@ -72,11 +78,14 @@ export default function index({ content }) {
 
                 <a
                   href={`https://www.instagram.com/${
-                    JSON.parse(content?.configuration.data[0].social_media)[0][
-                      "values"
-                    ]
+                    content?.configuration.data[0].social_media
+                      ? JSON.parse(
+                          content?.configuration.data[0].social_media
+                        )[0]["values"]
+                      : "#"
                   }`}
                   target="_blank"
+                  rel="noreferrer"
                   type="button"
                   className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
                 >
