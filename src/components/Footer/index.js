@@ -11,7 +11,7 @@ export default function index({ content }) {
             <div className="mb-6 flex flex-col justify-start items-center pr-10 pt-10">
               <img
                 src={`${assets_url}/config/${content?.configuration.data[0].logo}`}
-                alt="car"
+                alt="logo"
                 className={"w-5/6 mb-4"}
                 loading="lazy"
               />

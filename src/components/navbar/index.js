@@ -18,7 +18,7 @@ export default function Navbar({ content }) {
             <Link href="/">Home</Link>
             <Link href="/article">Article</Link>
             <Link href="/rentcar">Rent</Link>
-            <Link href="#">Contact us</Link>
+            <Link href="/aboutus">About us</Link>
           </div>
         </div>
       </div>
