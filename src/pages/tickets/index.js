@@ -7,6 +7,7 @@ import {
   getDestinations,
   getAdmin,
   getConfiguration,
+  getBanners,
 } from "../../utils/request";
 import { TicketCard, SearchBox, Carousel, Modal } from "../../components";
 
@@ -159,6 +160,7 @@ export async function getServerSideProps(context) {
     const cities = await getDestinations();
     const admin = await getAdmin();
     const configuration = await getConfiguration();
+    const banners = await getBanners();
 
     // console.log(admin);
 
@@ -171,6 +173,7 @@ export async function getServerSideProps(context) {
           cities,
           admin,
           configuration,
+          banners,
         },
       },
     };

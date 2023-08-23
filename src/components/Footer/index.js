@@ -17,7 +17,12 @@ export default function index({ content }) {
               />
               <div className="flex justify-center mb-6">
                 <a
-                  href="#!"
+                  href={`https://www.facebook.com/${
+                    JSON.parse(content?.configuration.data[0].social_media)[1][
+                      "values"
+                    ]
+                  }`}
+                  target="_blank"
                   type="button"
                   className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
                 >
@@ -39,8 +44,13 @@ export default function index({ content }) {
                 </a>
 
                 <a
-                  href="#!"
+                  href={`https://goo.gl/maps/${
+                    JSON.parse(content?.configuration.data[0].social_media)[2][
+                      "values"
+                    ]
+                  }`}
                   type="button"
+                  target="_blank"
                   className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
                 >
                   <svg
@@ -61,7 +71,12 @@ export default function index({ content }) {
                 </a>
 
                 <a
-                  href="#!"
+                  href={`https://www.instagram.com/${
+                    JSON.parse(content?.configuration.data[0].social_media)[0][
+                      "values"
+                    ]
+                  }`}
+                  target="_blank"
                   type="button"
                   className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
                 >
