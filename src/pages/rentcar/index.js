@@ -30,12 +30,13 @@ export default function Index({ content }) {
       >
         <div className="bg-white">
           <SectionTitle
-            title={"Mau sewa Bus ?"}
+            title={"Mau sewa Mobil ?"}
             subtitle={
               "Ada berbagai pilihan Bus dengan harga spesial, lho. Jangan sampai kehabisan ya!"
             }
           />
           <CarToRent
+            Rent
             vehicles={content?.vehicles}
             itemToShow={100}
             // filterBy={"Bus"}

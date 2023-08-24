@@ -1,9 +1,11 @@
-import React from "react";
-import { Card, Modal, ImageViewer } from "../../components";
-import { carToRent } from "../../mockup/datas";
+import React, { useState, useCallback } from "react";
+import { Card, Modal } from "../../components";
 import moment from "moment/moment";
 import "moment/locale/id";
 moment().locale("id");
+import ImageViewer from "react-simple-image-viewer";
+
+const assets_url = process.env.BACKEND_URL;
 
 export default function Index(props) {
   const { vehicles, itemToShow, filterBy, admin } = props;
@@ -20,6 +22,9 @@ export default function Index(props) {
     pickUpPlace: "",
     time: "",
   });
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [imageToShow, setImageToShow] = useState([]);
 
   const handleChange = (prop) => (event) => {
     setValue({ ...values, [prop]: event.target.value });
@@ -36,7 +41,7 @@ export default function Index(props) {
       admin.data[Math.floor(Math.random() * admin.data.length)];
 
     window.open(
-      `https://wa.me/${phoneNumber.wa_number}?text=Informasi%20pemesanan%20%3A%0A%E2%80%A2%20Nama%20%3A%20${values.name}%0A%E2%80%A2%20Jenis%20Unit%20%3A%20${tickectProps.brand}(${tickectProps.name})%0A%E2%80%A2%20Alamat%20Jemput%20%3A%20${values.pickUpPlace}%0A%E2%80%A2%20Tanggal%20%3A%20${values.rentStartDate}%0A%E2%80%A2%20Jumlah%20Hari%20%3A%20${values.totalDays}%0A%E2%80%A2%20Whatsapp%20%3A%20${values.phoneNumber}%0A%0AKami%20akan%20segera%20konfirmasi%20jika%20tiket%20tersedia.%20%0ATrimakasih.%0Aborneotrans.com`,
+      `https://wa.me/${phoneNumber.wa_number}?text=Informasi%20pemesanan%20%3A%0A%E2%80%A2%20Nama%20%3A%20${values.name}%0A%E2%80%A2%20Jenis%20Unit%20%3A%20${tickectProps.brand}(${tickectProps.name})%0A%E2%80%A2%20Alamat%20Jemput%20%3A%20${values.pickUpPlace}%0A%E2%80%A2%20Tanggal%20%3A%20${values.rentStartDate}%0A%E2%80%A2%20Jumlah%20Hari%20%3A%20${values.totalDays}%0A%E2%80%A2%20Whatsapp%20%3A%20${values.phoneNumber}%0A%0AKami%20akan%20segera%20konfirmasi%20jika%20Kendaraan%20tersedia.%20%0ATrimakasih.%0Aborneotrans.com`,
       "_blank"
     );
   }
@@ -46,17 +51,38 @@ export default function Index(props) {
   };
 
   const showImage = (images) => {
-    setShowPreview(!showPreview);
-    setImages(images);
+    let image = [];
+    console.log(imageToShow);
+    setImageToShow([]);
+    const cpImageToShow = [...imageToShow];
+    JSON.parse(images)?.forEach((img) => {
+      image.push(`${assets_url}/vehicles/${img}`);
+    });
+    setImageToShow(image);
+    openImageViewer(0);
+  };
+
+  const openImageViewer = useCallback((index) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  }, []);
+
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
   };
 
   return (
     <div className={`max-w-5xl mx-auto mt-10`}>
-      <ImageViewer
-        show={showPreview}
-        images={images}
-        setShow={(v) => setShowPreview(v)}
-      />
+      {isViewerOpen && (
+        <ImageViewer
+          src={imageToShow}
+          currentIndex={currentImage}
+          disableScroll={false}
+          closeOnClickOutside={true}
+          onClose={closeImageViewer}
+        />
+      )}
       <div
         className={`grid m-auto grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 gap-2 lg:gap-2`}
       >
@@ -84,7 +110,7 @@ export default function Index(props) {
                   maintype={vehicle?.maintype}
                   image={images[Math.floor(Math.random() * images.length)]}
                   onClick={() => booking(vehicle)}
-                  onImageClick={() => showImage(images)}
+                  onImageClick={() => showImage(vehicle?.thumbnail)}
                 />
               </>
             );
