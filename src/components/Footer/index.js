@@ -116,7 +116,7 @@ export default function index({ content }) {
 
             <div className="mb-6 flex flex-col justify-start items-start">
               <h5 className="uppercase font-bold mb-2.5">Partners</h5>
-              <div class="grid grid-cols-4 gap-4 mt-4">
+              <div className="grid grid-cols-4 gap-4 mt-4">
                 {content?.partners.data.slice(0, 11).map((v, i) => (
                   <div key={i} title={v.name}>
                     <img
