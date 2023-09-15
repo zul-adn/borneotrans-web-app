@@ -162,8 +162,6 @@ export async function getServerSideProps(context) {
     const configuration = await getConfiguration();
     const banners = await getBanners();
 
-    // console.log(admin);
-
     return {
       props: {
         content: {
