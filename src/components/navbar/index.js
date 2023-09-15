@@ -5,7 +5,10 @@ const assets_url = process.env.BACKEND_URL;
 
 export default function Navbar({ content }) {
   return (
-    <nav className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg  bg-opacity-30 ">
+    <nav
+      id="nav"
+      className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg  bg-opacity-30 "
+    >
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/">

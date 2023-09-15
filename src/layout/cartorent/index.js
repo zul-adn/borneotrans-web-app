@@ -63,11 +63,15 @@ export default function Index(props) {
   };
 
   const openImageViewer = useCallback((index) => {
+    const nav = document.getElementById("nav");
+    nav.style.zIndex = 0;
     setCurrentImage(index);
     setIsViewerOpen(true);
   }, []);
 
   const closeImageViewer = () => {
+    const nav = document.getElementById("nav");
+    nav.style.zIndex = 10;
     setCurrentImage(0);
     setIsViewerOpen(false);
   };

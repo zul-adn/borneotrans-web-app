@@ -26,11 +26,15 @@ export default function Index({ content }) {
   }, [content?.article.data[0].img]);
 
   const openImageViewer = useCallback((index) => {
+    const nav = document.getElementById("nav");
+    nav.style.zIndex = 0;
     setCurrentImage(index);
     setIsViewerOpen(true);
   }, []);
 
   const closeImageViewer = () => {
+    const nav = document.getElementById("nav");
+    nav.style.zIndex = 10;
     setCurrentImage(0);
     setIsViewerOpen(false);
   };
@@ -72,13 +76,15 @@ export default function Index({ content }) {
         />
       </div>
       {isViewerOpen && (
-        <ImageViewer
-          src={imageToShow}
-          currentIndex={currentImage}
-          disableScroll={false}
-          closeOnClickOutside={true}
-          onClose={closeImageViewer}
-        />
+        <>
+          <ImageViewer
+            src={imageToShow}
+            currentIndex={currentImage}
+            disableScroll={true}
+            closeOnClickOutside={true}
+            onClose={closeImageViewer}
+          />
+        </>
       )}
     </Layout>
   );
