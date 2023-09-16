@@ -30,7 +30,9 @@ export default function Index(props) {
           onClick={() => onClick(props)}
         >
           <div className={"flex flex-col items-center text-lg"}>
-            <div className={` flex justify-center items-center flex-col py-4`}>
+            <div
+              className={`w-28 flex justify-center items-center flex-col py-4`}
+            >
               <img
                 src={`${assets_url}/partners/${partner[0]?.img}`}
                 style={{ width: "50%", height: "auto" }}
