@@ -26,15 +26,16 @@ export default function Index(props) {
     <>
       {isMobile ? (
         <div
-          className={`flex flex-col justify-between drop-shadow-md hover:drop-shadow-xl rounded-sm p-2 bg-white cursor-pointer p-4 mt-2`}
+          className={`flex flex-col justify-between drop-shadow-md hover:drop-shadow-xl rounded-sm bg-white cursor-pointer p-4 mt-2`}
           onClick={() => onClick(props)}
         >
           <div className={"flex flex-col items-center text-lg"}>
-            <div
-              className={`w-16 mr-5 flex justify-center items-center flex-col`}
-            >
-              <img src={`${assets_url}/partners/${partner[0]?.img}`} />
-              <div className="mt-2">{partner[0]?.name}</div>
+            <div className={` flex justify-center items-center flex-col py-4`}>
+              <img
+                src={`${assets_url}/partners/${partner[0]?.img}`}
+                style={{ width: "50%", height: "auto" }}
+              />
+              {/* <div className="mt-2">{partner[0]?.name}</div> */}
             </div>
             <div className="flex mt-4">
               <div className="flex flex-col items-center">
@@ -54,21 +55,30 @@ export default function Index(props) {
               </div>
             </div>
           </div>
-          <div className={`flex flex-col justify-center items-center mt-5`}>
-            {date}
-            <span className={`text-xl`}>{time}</span>
-          </div>
-          <div className={`flex flex-col items-center justify-center`}>
-            <div
-              className={
-                "text-right mb-7 text-orange-600 font-semibold mr-2 text-2xl"
-              }
-            >
-              Rp{" "}
-              {trip[0].price
-                ?.toString()
-                .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+          <div
+            className="flex flex-row justify-between items-center mt-5 px-5 pt-2"
+            style={{ borderTop: "1px solid #bdc3c7" }}
+          >
+            <div className={`flex flex-col `}>
+              {date}
+              <span className={`text-xl`}>{time}</span>
             </div>
+            <div className={`flex flex-col items-center justify-center`}>
+              <div
+                className={
+                  "text-right text-orange-600 font-semibold mr-2 text-xl "
+                }
+              >
+                Rp{" "}
+                {trip[0].price
+                  ?.toString()
+                  .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}{" "}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <Button label={"Pesan"} onClick={() => onClick(props)} />
           </div>
         </div>
       ) : (
@@ -77,13 +87,13 @@ export default function Index(props) {
           onClick={() => onClick(props)}
         >
           <div className={"flex flex-row items-center text-lg"}>
-            <div
-              className={`w-16 mr-5 flex justify-center items-center flex-col`}
-            >
-              <img src={`${assets_url}/partners/${partner[0]?.img}`} />
-              <div className="mt-2">{partner[0]?.name}</div>
+            <div className={`w-28 flex justify-center items-center flex-col`}>
+              <img
+                src={`${assets_url}/partners/${partner[0]?.img}`}
+                style={{ width: "100%", height: "auto" }}
+              />
             </div>
-            <div className="w-full flex justify-center items-center flex-row px-10 ">
+            {/* <div className="w-full flex justify-center items-center flex-row px-10 ">
               <div className="flex flex-col">
                 <span>{from}</span>
                 <span className="text-sm ">{trip[0].from}</span>
@@ -96,16 +106,36 @@ export default function Index(props) {
                 <span>{to}</span>
                 <span className="text-sm ">{trip[0].to}</span>
               </div>
+              
+            </div> */}
+            <div className="flex mt-4 w-96">
+              <div className="flex flex-col items-center">
+                <span className={`text-xs`}> </span>
+                <div className={"w-0.5 h-full mx-5 bg-black my-1"}></div>
+              </div>
+              <div className="flex justify-center items-center flex-col px-1 ">
+                <div className="flex flex-col">
+                  <span className="font-semibold">{from}</span>
+                  <span className="text-sm ">{trip[0].from}</span>
+                </div>
+
+                <div className="flex flex-col mt-4">
+                  <span className="font-semibold">{to}</span>
+                  <span className="text-sm ">{trip[0].to}</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className={`flex flex-col`}>
+
+          <div className={`flex flex-col  justify-center items-center`}>
             {date}
-            <span className={`text-xl`}>{time}</span>
+            <span className={`text-xl font-bold`}>{time}</span>
           </div>
-          <div className={`flex flex-col items-center justify-center`}>
+
+          <div className={`flex flex-col items-center justify-center `}>
             <div
               className={
-                "text-right mb-7 text-orange-600 font-semibold mr-2 text-2xl"
+                "text-right  text-orange-600 font-semibold mr-2 text-2xl"
               }
             >
               Rp{" "}
@@ -113,6 +143,10 @@ export default function Index(props) {
                 ?.toString()
                 .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
             </div>
+          </div>
+
+          <div className="flex justify-center items-center  w-40 mt-5">
+            <Button label={"Pesan"} onClick={() => onClick(props)} />
           </div>
         </div>
       )}
