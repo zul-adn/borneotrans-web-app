@@ -47,7 +47,7 @@ export default function Navbar({ content }) {
       <div
         className={`${
           openMobileMenu ? "flex" : "hidden"
-        } h-full bg-white fixed flex-col text-right z-30 w-1/2 right-0 top-0 shadow-sm`}
+        } h-full bg-white fixed flex-col  z-30 w-3/4 right-0 top-0 shadow-sm bg-opacity-95`}
       >
         <div className="mb-8 pt-5 pr-5 flex justify-end items-end">
           <svg
@@ -60,16 +60,16 @@ export default function Navbar({ content }) {
             <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
           </svg>
         </div>
-        <Link href="/" className="text-3xl mb-2 border-b-2 p-2">
+        <Link href="/" className="text-lg border-b-2 p-4">
           Home
         </Link>
-        <Link href="/article" className="text-3xl mb-2 border-b-2 p-2">
+        <Link href="/article" className="text-lg  border-b-2 p-4">
           Article
         </Link>
-        <Link href="/rentcar" className="text-3xl mb-2 border-b-2 p-2">
+        <Link href="/rentcar" className="text-lg  border-b-2 p-4">
           Rent
         </Link>
-        <Link href="/aboutus" className="text-3xl mb-2 border-b-2 p-2">
+        <Link href="/aboutus" className="text-lg  border-b-2 p-4">
           About us
         </Link>
       </div>
