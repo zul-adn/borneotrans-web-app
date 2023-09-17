@@ -23,10 +23,18 @@ export default function Navbar({ content }) {
               />
             </Link>
             <div className="hidden space-x-8 text-gray-900 md:flex lg:flex ">
-              <Link href="/">Home</Link>
-              <Link href="/article">Article</Link>
-              <Link href="/rentcar">Rent</Link>
-              <Link href="/aboutus">About us</Link>
+              <Link href="/" className="text-black">
+                Home
+              </Link>
+              <Link href="/article" className="text-black">
+                Article
+              </Link>
+              <Link href="/rentcar" className="text-black">
+                Rent
+              </Link>
+              <Link href="/aboutus" className="text-black">
+                About us
+              </Link>
             </div>
             {isMobile ? (
               <svg
@@ -60,16 +68,16 @@ export default function Navbar({ content }) {
             <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
           </svg>
         </div>
-        <Link href="/" className="text-lg border-b-2 p-4">
+        <Link href="/" className="text-lg border-b-2 p-4 text-black">
           Home
         </Link>
-        <Link href="/article" className="text-lg  border-b-2 p-4">
+        <Link href="/article" className="text-lg  border-b-2 p-4 text-black">
           Article
         </Link>
-        <Link href="/rentcar" className="text-lg  border-b-2 p-4">
+        <Link href="/rentcar" className="text-lg  border-b-2 p-4 text-black">
           Rent
         </Link>
-        <Link href="/aboutus" className="text-lg  border-b-2 p-4">
+        <Link href="/aboutus" className="text-lg  border-b-2 p-4 text-black">
           About us
         </Link>
       </div>
